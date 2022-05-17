@@ -47,7 +47,18 @@ describe("App integrations tests", () => {
       expect(response.body).not.toBeNull();
       expect(typeof response.body.token).toEqual("string");
     })
+  })
+
+  describe("GET /options", ()=>{
     
+    it("should return 200 and options on match route", async ()=>{
+      
+      const response = await supertest(app).get("/options");
+      
+      expect(response.status).toEqual(200);
+      expect(response.body).not.toBeNull();
+      expect(response.body.length).toBeGreaterThan(0);
+    })
   })
   afterAll(async () => {
     await prisma.$disconnect();

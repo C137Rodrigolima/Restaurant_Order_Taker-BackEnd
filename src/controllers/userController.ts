@@ -14,7 +14,7 @@ async function signIn(req: Request, res: Response) {
 
   const token = await userServices.signIn(user);
 
-  res.send({ token });
+  res.send(token);
 }
 
 export const userControllers = {

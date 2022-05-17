@@ -6,8 +6,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/server.ts",
-    "test": "NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest -i",
+    "test": "dotenv -e .env.test prisma db seed && NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest -i",
     "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
@@ -22,7 +25,8 @@
     "express": "^4.18.1",
     "express-async-errors": "^3.1.1",
     "joi": "^17.6.0",
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^8.5.1",
+    "socket.io": "^4.5.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
