@@ -35,7 +35,7 @@ model Option {
 
 model Order {
   id Int @id @default(autoincrement())
-  createdAt DateTime
+  createdAt  DateTime   @default(now())
   done Boolean @default(false)
   table String
   

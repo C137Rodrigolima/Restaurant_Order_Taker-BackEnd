@@ -25,7 +25,16 @@ async function signIn(userData: LoginUserData){
   return token;
 }
 
+async function findById(id: number) {
+  const user = await UserRepository.findById(id);
+  if (!user) throw { type: "not_found" };
+  
+  delete user.password;
+  return user;
+}
+
 export const userServices = {
   signUp,
-  signIn
+  signIn,
+  findById
 }

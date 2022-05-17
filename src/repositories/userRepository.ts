@@ -11,6 +11,15 @@ function findByEmail(userEmail: string){
         }
     })
 }
+
+export async function findById(id: number) {
+    return prisma.user.findUnique({
+        where: {
+            id,
+        },
+    });
+}
+
 function insert(userData: CreateUserData){
     return prisma.user.create({
         data: userData
@@ -19,5 +28,6 @@ function insert(userData: CreateUserData){
 
 export const UserRepository = {
     insert,
-    findByEmail
+    findByEmail,
+    findById
 }
