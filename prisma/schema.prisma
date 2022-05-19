@@ -21,6 +21,15 @@ model User {
   @@map("users")
 }
 
+model Adm {
+  id  Int @id @default(autoincrement())
+  email String @unique
+  password String
+  name String
+
+  @@map("adms")
+}
+
 model Option {
   id Int @id @default(autoincrement())
   image String

@@ -2,7 +2,7 @@ import { User } from "@prisma/client";
 import { prisma } from "../database.js";
 
 export type CreateUserData = Omit<User, "id">;
-export type LoginUserData = Omit<User, "id" | "name">;
+export type LoginData = Omit<User, "id" | "name">;
 
 function findByEmail(userEmail: string){
     return prisma.user.findUnique({
@@ -12,8 +12,24 @@ function findByEmail(userEmail: string){
     })
 }
 
+function findAdmByEmail(admEmail: string){
+    return prisma.adm.findUnique({
+        where: {
+            email: admEmail
+        }
+    })
+}
+
 export async function findById(id: number) {
     return prisma.user.findUnique({
+        where: {
+            id,
+        },
+    });
+}
+
+export async function findAdmById(id: number) {
+    return prisma.adm.findUnique({
         where: {
             id,
         },
@@ -29,5 +45,7 @@ function insert(userData: CreateUserData){
 export const UserRepository = {
     insert,
     findByEmail,
-    findById
+    findAdmByEmail,
+    findById,
+    findAdmById
 }

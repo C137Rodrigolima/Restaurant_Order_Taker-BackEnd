@@ -17,4 +17,10 @@ userRouter.post(
   userControllers.signIn
 )
 
+userRouter.post(
+  "/adm/login",
+  validateSchemaMiddleware(userSchemas.login),
+  userControllers.admSignIn
+)
+
 export default userRouter;

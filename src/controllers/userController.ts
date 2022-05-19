@@ -17,7 +17,16 @@ async function signIn(req: Request, res: Response) {
   res.send(token);
 }
 
+async function admSignIn(req: Request, res: Response) {
+  const admData = req.body;
+
+  const token = await userServices.admsSignIn(admData);
+  
+  res.send(token);
+}
+
 export const userControllers = {
   signUp,
-  signIn
+  signIn,
+  admSignIn
 }

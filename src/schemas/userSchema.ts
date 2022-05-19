@@ -1,5 +1,5 @@
 import Joi from "joi";
-import { CreateUserData, LoginUserData } from "../repositories/userRepository";
+import { CreateUserData, LoginData } from "../repositories/userRepository";
 
 const register = Joi.object<CreateUserData>({
   email: Joi.string().required(),
@@ -7,7 +7,7 @@ const register = Joi.object<CreateUserData>({
   name: Joi.string().required()
 });
 
-const login = Joi.object<LoginUserData>({
+const login = Joi.object<LoginData>({
   email: Joi.string().required(),
   password: Joi.string().required(),
 });

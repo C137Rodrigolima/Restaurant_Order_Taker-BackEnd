@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import { userServices } from "../services/userServices.js";
 dotenv.config();
 
-export async function ensureAuthenticatedMiddleware(
+export async function ensureAdmAuthenticatedMiddleware(
   req: Request,
   res: Response,
   next: NextFunction
@@ -13,12 +13,12 @@ export async function ensureAuthenticatedMiddleware(
   if (!authorization) throw { type: "unauthorized" };
 
   const token = authorization.replace("Bearer ", "");
-  const { userId } = jwt.verify(token, process.env.JWT_SECRET) as {
-    userId: number;
+  const { admId } = jwt.verify(token, process.env.JWT_SECRET) as {
+    admId: number;
   };
 
-  const user = await userServices.findById(userId);
-  res.locals.user = user;
+  const adm = await userServices.findAdmsById(admId);
+  res.locals.adm = adm;
 
   next();
 }
