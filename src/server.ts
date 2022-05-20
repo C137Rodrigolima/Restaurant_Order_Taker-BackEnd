@@ -28,12 +28,11 @@ io.on('connection', (socket) => {
 
   socket.on("Finish_Order", async (data) =>{
     const alterado = await OrderServices.updateOrder(data.orderId);
+
     socket.to(data.table).emit("Order_Coming", alterado);
+    socket.emit("new_order_arrived");
   })
-
-//mandar para uma table específica e ver se ela recebe;
-
-//dando certo, mandar para uma table diferente e ver se ela recebe;
+  
 });
 
 const PORT = process.env.PORT || 5000;
