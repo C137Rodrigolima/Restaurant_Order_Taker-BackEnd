@@ -9,7 +9,7 @@ const server = http.createServer(app);
 
 export const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "postgres://spbnawcalfrrjt:2c0e61885b77fe3d0e7e535e935374ebdca2c77c1cf4f839187f736125e7b0d3@ec2-34-231-177-125.compute-1.amazonaws.com:5432/dh8ns3i6ggtvv",
     credentials: true,
   },
 });
