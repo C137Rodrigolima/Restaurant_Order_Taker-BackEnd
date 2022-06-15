@@ -2,7 +2,8 @@
   "name": "r_o_t-backend",
   "version": "1.0.0",
   "engines": {
-    "node": "^17.7.2"
+    "node": "^17.7.2",
+    "npm": "8.5.5"
   },
   "type": "module",
   "description": "",
