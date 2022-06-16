@@ -9,7 +9,6 @@ const server = http.createServer(app);
 
 export const io = new Server(server, {
   cors: {
-    origin: process.env.HEROKU_BASE_URL,
     credentials: true,
   },
 });
