@@ -1,10 +1,11 @@
 import { prisma } from "../src/database.js";
+import { errorHandlerMiddleware } from "../src/middlewares/errorHandlerMiddleware.js";
 
 async function main() {
   await prisma.option.createMany({
     data: [
       {
-      image: "https://superramos.com/wp-content/uploads/2018/07/frango_parmegiana-600x400.jpg",
+      image: "https://www.supermercadosmundial.com.br/content/816x480/etTNPZq1yhpN9WL9.png",
       name: "frango à parmegiana",
       price: "23.99"
       },
@@ -26,6 +27,14 @@ async function main() {
     ],
     skipDuplicates: true,
   });
+
+  await prisma.adm.create({
+    data: {
+      email: "adm@email.com",
+      password: "$2b$12$k3L6St70XlLfoDI5HCN4E.mvJjMyyxczbc1LAkYTQkkWtMVW5lC56",
+      name: "adm",
+    }
+  })
 }
 
 main()

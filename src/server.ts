@@ -28,7 +28,7 @@ io.on('connection', (socket) => {
   socket.on("Finish_Order", async (data) =>{
     const alterado = await OrderServices.updateOrder(data.orderId);
 
-    socket.to(data.table).emit("Order_Coming", alterado);
+    socket.to(data.table).emit("Order_Coming", {alterado: alterado, table: data.table});
     socket.emit("new_order_arrived");
   })
   
